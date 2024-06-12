@@ -1,14 +1,16 @@
+import sys
+
+input = sys.stdin.readline
+
 n = int(input())
+nums = list(map(int, input().split()))
 
-sum = 0
+prefix_sum = 0
+res = 0
 
-x_list = list(map(int, input().split()))
+for i in range(len(nums) - 1, 0, -1):
+    prefix_sum += nums[i]
+    res += nums[i - 1] * prefix_sum
 
-for i in range(n):
-    for j in range(n):
-        if i >= j:
-            continue
-        else:
-            sum += (x_list[i] * x_list[j])
-            
-print(sum)
+
+print(res)
